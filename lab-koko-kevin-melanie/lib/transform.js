@@ -43,6 +43,13 @@ transform.boostBlue = function(bmp, callback) {
   callback(null, bmp);
 };
 
+// transform.boostTransparent = function(bmp, callback) {
+//   for(let i = 0; i < bmp.pixelArray.length / 4; i += 4) {
+//     bmp.pixelArray[i - 1] = 50;
+//   }
+//   callback(null, bmp);
+// };
+
 transform.redChannel = function(bmp, callback) {
   for(let i = 0; i < bmp.pixelArray.length / 4; i += 4) {
     bmp.pixelArray[i] = bmp.pixelArray[i + 2];

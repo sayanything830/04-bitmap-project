@@ -50,7 +50,7 @@ describe('Reader Module', function() {
         bitmap.parse(fd, (err, bmp) => {
           if(err) console.error(err);
           console.log(bmp.pixelArray);
-          transform.blackWhite(bmp, (err, bmpObj) => {
+          transform.boostBlue(bmp, (err, bmpObj) => {
             console.log('transform function', bmp.pixelArray);
             if(err) console.error(err);
             reader.write(bmpObj, err => {
