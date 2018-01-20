@@ -3,7 +3,8 @@
 const reader = require('../lib/reader.js');
 const imagePath = `${__dirname}/asset/bitmap.bmp`;
 const bitmap = require('../lib/bitmap.js');
-console.log('this should be a file path', bitmap);
+const transform = require('../lib/transform.js');
+// console.log('this should be a file path', bitmap);
 
 describe('Reader Module', function() {
   describe('#Read', () => {
@@ -11,7 +12,7 @@ describe('Reader Module', function() {
       reader.read(imagePath, (err, fd) => {
         if(err) console.error(err);
         expect(fd).not.toBeNull();
-        console.log(fd);
+        // console.log(fd);
         done();
       });
     });
@@ -23,21 +24,38 @@ describe('Reader Module', function() {
         expect(fd).not.toBeNull();
         bitmap.parse(fd, (err, bmp) => {
           if(err) console.error(err);
-          console.log(bmp);
+          expect(bmp).not.toBeNull();
           done();
         });
       });
     });
-    it('should write a new file', (done) => {
+    // it('should write a new file', (done) => {
+    //   reader.read(imagePath, (err, fd) => {
+    //     if(err) console.error(err);
+    //     expect(fd).not.toBeNull();
+    //     bitmap.parse(fd, (err, bmp) => {
+    //       if(err) console.error(err);
+    //       // console.log(bmp);
+    //       reader.write(bmp, err => {
+    //         if(err) return console.error(err);
+    //         done();
+    //       });
+    //     });
+    //   });
+    // });
+    it('should write a changed file', (done) => {
       reader.read(imagePath, (err, fd) => {
         if(err) console.error(err);
         expect(fd).not.toBeNull();
         bitmap.parse(fd, (err, bmp) => {
           if(err) console.error(err);
-          console.log(bmp);
-          reader.write(bmp, err => {
-            if(err) return console.error(err);
-            done();
+          transform.reverse(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            // console.log(bmp);
+            reader.write(bmp, err => {
+              if(err) return console.error(err);
+              done();
+            });
           });
         });
       });
