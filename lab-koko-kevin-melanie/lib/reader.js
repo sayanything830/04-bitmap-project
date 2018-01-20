@@ -13,8 +13,8 @@ reader.read = function(path, callback) {
   });
 };
 
-reader.write = function(bmpObj, callback) {
-  fs.writeFile(`${__dirname}/../__test__/asset/new.bmp`, bmpObj.allData, err => {
+reader.write = function(bmpObj, filePath, callback) {
+  fs.writeFile(filePath, bmpObj.allData, err => {
     if(err) return callback(err);
     console.log('file created');
   });
