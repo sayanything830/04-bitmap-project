@@ -17,5 +17,6 @@ reader.write = function(bmpObj, filePath, callback) {
   fs.writeFile(filePath, bmpObj.allData, err => {
     if(err) return callback(err);
     console.log('file created');
+    return callback(null);
   });
 };

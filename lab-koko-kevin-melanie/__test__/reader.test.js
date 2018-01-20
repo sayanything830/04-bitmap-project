@@ -2,9 +2,11 @@
 
 const reader = require('../lib/reader.js');
 const imagePath = `${__dirname}/asset/bitmap.bmp`;
+const newPath = `${__dirname}/asset/test-bitmap.bmp`;
 const bitmap = require('../lib/bitmap.js');
 const transform = require('../lib/transform.js');
-// console.log('this should be a file path', bitmap);
+const fs = require('fs');
+require('jest');
 
 describe('Reader Module', function() {
   describe('#Read', () => {
@@ -12,8 +14,21 @@ describe('Reader Module', function() {
       reader.read(imagePath, (err, fd) => {
         if(err) console.error(err);
         expect(fd).not.toBeNull();
-        // console.log(fd);
         done();
+      });
+    });
+    it('should write a new file', (done) => {
+      reader.read(imagePath, (err, fd) => {
+        if(err) console.error(err);
+        expect(fd).not.toBeNull();
+        bitmap.parse(fd, (err, bmp) => {
+          if(err) console.error(err);
+          reader.write(bmp, newPath, err => {
+            if(err) return console.error(err);
+            expect(fs.existsSync(newPath)).toBe(true);
+            done();
+          });
+        });
       });
     });
   });
@@ -29,31 +44,20 @@ describe('Reader Module', function() {
         });
       });
     });
-    // it('should write a new file', (done) => {
-    //   reader.read(imagePath, (err, fd) => {
-    //     if(err) console.error(err);
-    //     expect(fd).not.toBeNull();
-    //     bitmap.parse(fd, (err, bmp) => {
-    //       if(err) console.error(err);
-    //       // console.log(bmp);
-    //       reader.write(bmp, err => {
-    //         if(err) return console.error(err);
-    //         done();
-    //       });
-    //     });
-    //   });
-    // });
+  });
+  describe('#Transform', () => {
     it('should write a changed file', (done) => {
       reader.read(imagePath, (err, fd) => {
         if(err) console.error(err);
-        expect(fd).not.toBeNull();
         bitmap.parse(fd, (err, bmp) => {
           if(err) console.error(err);
-          transform.reverse(bmp, (err, bmp) => {
+          let original = bmp.allData;
+          transform.reverse(bmp, (err, bmpNew) => {
             if(err) console.error(err);
-            // console.log(bmp);
-            reader.write(bmp, err => {
+            let altered = bmpNew.allData;
+            reader.write(bmpNew, newPath, err => {
               if(err) return console.error(err);
+              expect(Buffer.compare(original, altered)).toBe(0);
               done();
             });
           });
