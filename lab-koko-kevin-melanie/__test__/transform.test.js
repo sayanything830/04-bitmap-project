@@ -44,6 +44,20 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should modify the colorArray of the bitmap image.', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          let orgColorArray = Buffer.from(bmp.colorArray);
+          transform.random(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            let modColorArray = Buffer.from(bmp.colorArray);
+            expect(Buffer.compare(orgColorArray, modColorArray)).not.toBe(0);
+            done();
+          });
+        });
+      });
+    });
   });
 
   describe('#Transform.invert tests', function() {
@@ -82,6 +96,35 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should modify the colorArray of the bitmap image.', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          let orgColorArray = Buffer.from(bmp.colorArray);
+          transform.invert(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            let modColorArray = Buffer.from(bmp.colorArray);
+            expect(Buffer.compare(orgColorArray, modColorArray)).not.toBe(0);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should invert the colorArray of the bitmap image.', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          let orgColorArray = Buffer.from(bmp.colorArray);
+          transform.invert(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            let modColorArray = Buffer.from(bmp.colorArray);
+            expect(orgColorArray.every((bit, i) => bit + modColorArray[i] === 255)).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
   });
 
   describe('#Transform.reverse tests', function() {
@@ -120,8 +163,36 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should modify the pixelArray of the bitmap image.', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          let orgPixelArray = Buffer.from(bmp.pixelArray);
+          transform.reverse(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            let modPixelArray = Buffer.from(bmp.pixelArray);
+            expect(Buffer.compare(orgPixelArray, modPixelArray)).not.toBe(0);
+            done();
+          });
+        });
+      });
+    });
   });
 
+  it('should should reverse the pixelArray of the bitmap image.', (done) => {
+    reader.read(imagePath, (err, data) => {
+      bitmap.parse(data, (err, bmp) => {
+        let orgPixelArray = Buffer.from(bmp.pixelArray);
+        transform.reverse(bmp, (err, bmp) => {
+          if(err) console.error(err);
+          let modPixelArray = Buffer.from(bmp.pixelArray);
+          expect(Buffer.compare(orgPixelArray.reverse(), modPixelArray)).toBe(0);
+          done();
+        });
+      });
+    });
+  });
+  
   describe('#Transform.boostGreen tests', function() {
     it('should return error message if the objet was not created by the Bmp constructor', (done) => {
       transform.random({some: 'thing'}, (err, bmp) => {
@@ -158,6 +229,20 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should boost all green values to 255', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          transform.boostGreen(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            bmp.colorArray.every((green, i) => (!i % 4) ? green === 255 : true);
+            expect(bmp.colorArray.every((green, i) => (!(i + 1) % 2) ? green === 255 : true)).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
   });
 
   describe('#Transform.boostRed  tests', function() {
@@ -191,6 +276,19 @@ describe('#Transform module tests', function() {
           transform.boostRed (bmp, (err, bmp) => {
             if(err) console.error(err);
             expect(err).toBe('This is not a valid bitmap object');
+            done();
+          });
+        });
+      });
+    });
+
+    it('should boost all red values to 255', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          transform.boostGreen(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            bmp.colorArray.every((green, i) => (!i % 4) ? green === 255 : true);
+            expect(bmp.colorArray.every((red, i) => (!(i + 1) % 3) ? red === 255 : true)).toBe(true);
             done();
           });
         });
@@ -234,6 +332,20 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should boost all blue values to 255', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          transform.boostGreen(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            bmp.colorArray.every((green, i) => (!i % 4) ? green === 255 : true);
+            expect(bmp.colorArray.every((blue, i) => (!(i + 1) % 3) ? blue === 255 : true)).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
   });
 
   describe('#Transform.redChannel  tests', function() {
@@ -272,6 +384,34 @@ describe('#Transform module tests', function() {
         });
       });
     });
+
+    it('should invert the colorArray of the bitmap image.', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          let orgColorArray = Buffer.from(bmp.colorArray);
+          transform.invert(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            let modColorArray = Buffer.from(bmp.colorArray);
+            expect(orgColorArray.every((bit, i) => bit + modColorArray[i] === 255)).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
+    it('should adjust blue and green to equal red', (done) => {
+      reader.read(imagePath, (err, data) => {
+        bitmap.parse(data, (err, bmp) => {
+          transform.boostGreen(bmp, (err, bmp) => {
+            if(err) console.error(err);
+            bmp.colorArray.every((green, i) => (!i % 4) ? green === 255 : true);
+            expect(bmp.colorArray.every((bit, i) => (!(i + 1) % 4) ? (bit[i] + bit[i + 1])/2 === bit[i + 2] : true)).toBe(true);
+            done();
+          });
+        });
+      });
+    });
+
   });
 
   describe('#Transform.blackWhite  tests', function() {

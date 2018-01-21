@@ -1,20 +1,16 @@
 .\"Modified from man(1) of FreeBSD, the NetBSD mdoc.template, and mdoc.samples.
-.\"See Also:
-.\"man mdoc.samples for a complete listing of options
-.\"man mdoc for the short list of editing options
-.\"/usr/share/misc/mdoc.template
-.Dd 01/21/18            \" DATE
-.Dt dazzle 1      \" Program name and manual section number
+.Dd 01/21/18            
+.Dt dazzle 1     
 .Os Darwin
-.Sh NAME                 \" Section Header - required - don't modify
+.Sh NAME                 
 .Nm dazzle
 .Nd a command line bitmap transformer
-.Sh SYNOPSIS             \" Section Header - required - don't modify
+.Sh SYNOPSIS             
 .Nm
 .Pa Ar bitmap_file_path 
 .Ar Ar new_file_name                
 .Ar Ar transform_method                 
-.Sh DESCRIPTION          \" Section Header - required - don't modify
+.Sh DESCRIPTION          
 The
 .Nm
 command line utility allows the user to transform a 
@@ -44,18 +40,18 @@ transform-method
 .El                     
 .Pp
 Transform Methods:
-.Bl  -tag -width -indent \" Differs from above in tag removed
+.Bl  -tag -width -indent 
 .It Ar random                
 Randomize the color palette of the image
-.It Ar reverse                \"-a flag as a list item
+.It Ar reverse                
 Description of -a flag
 .It Ar boostGreen
 Sets the green values to 255
-.It Ar boostRed                \"-a flag as a list item
+.It Ar boostRed                
 Sets the red values to 255
 .It Ar boostBlue
 Sets the blue values to 255
-.It Ar redChannel                \"-a flag as a list item
+.It Ar redChannel                
 Creates a gray scale image based on the value of the red value
 .It Ar blackWhite
 Creates a gray scale image based on the average value of the rgb values
@@ -67,7 +63,7 @@ Inverts every fourth bit in the color palette
 Inverts every third bit in the color palette
 .It Ar invert4
 Inverts every other bit in the color palette
-.El                      \" Ends the list
+.El                      
 .Sh Example
 .Pp
 .D1 dazzle ~/users/home/pictures/test.bmo dazzed.bmp boostGreen
@@ -75,5 +71,3 @@ Inverts every other bit in the color palette
 .\" List links in ascending order by section, alphabetically within a section.
 .\" Please do not reference files that do not exist without filing a bug report
 .Lk https://www.codefellows.org
-.\" .Sh BUGS              \" Document known, unremedied bugs
-.\" .Sh HISTORY           \" Document history if command behaves in a unique manner
