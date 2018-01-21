@@ -6,7 +6,7 @@ const bitmap = require('./lib/bitmap.js');
 const transform = require('./lib/transform.js');
 
 start.processImage = function(args) {
-  console.log('args', args);
+  // console.log('args', args);
   if(args.length < 5) {
     // console.error('invalid arguments');
     return 'invalid arguments';
