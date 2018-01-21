@@ -9,6 +9,7 @@
   "bin": {
     "dazzle": "index.js"
   },
+  "man": "dazzle.1",
   "scripts": {
     "test": "jest --verbose"
   },
