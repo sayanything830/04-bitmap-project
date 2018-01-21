@@ -16,5 +16,14 @@ function Bmp(buffer) {
 
 
 bitmap.parse = function(buffer, callback) {
-  callback(null, new Bmp(buffer));
+  if(!buffer) return callback(`Error: buffer is ${buffer}`);
+  let imgBuff;
+  try {
+    imgBuff = new Bmp(buffer);
+  }
+  catch(e){
+    imgBuff = {sig:null};
+  }
+  if (imgBuff.sig !== 'BM') return callback('Error: is not a Windows format bitmap');
+  callback(null, imgBuff);
 };
