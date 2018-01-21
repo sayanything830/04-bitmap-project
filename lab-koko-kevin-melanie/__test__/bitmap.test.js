@@ -2,10 +2,7 @@ const reader = require('../lib/reader.js');
 const imagePath = `${__dirname}/asset/bitmap.bmp`;
 const not_imagePath = `${__dirname}/asset/not_image.txt`;
 const wrongBMP_imagePath = `${__dirname}/asset/MARBLES.BMP`;
-const newPath = `${__dirname}/asset/test-bitmap.bmp`;
 const bitmap = require('../lib/bitmap.js');
-const transform = require('../lib/transform.js');
-const fs = require('fs');
 
 
 
