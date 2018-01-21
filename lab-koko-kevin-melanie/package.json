@@ -6,8 +6,10 @@
   "directories": {
     "lib": "lib"
   },
+  "bin": {
+    "dazzle": "index.js"
+  },
   "scripts": {
-    "dazzle": "node index.js",
     "test": "jest --verbose"
   },
   "author": "melanie, koko, kevin",
