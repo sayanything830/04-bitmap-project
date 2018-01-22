@@ -9,7 +9,7 @@ reader.read = function(path, callback) {
       console.error(err);
       return callback(err);
     }
-    callback(null, fd);
+    return callback(null, fd);
   });
 };
 
