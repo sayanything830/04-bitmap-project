@@ -11,7 +11,7 @@ The dazzle command line utility allows the user to transform a bitmap image usin
 
 ### dazzle takes three arguments
 
-  - <bitmap_file_path> - the path to a bitmap image to transform
+  - <bitmap_file_path>  the path to a bitmap image to transform
 
   - <new-file-name>   the name for the new bitmap image without an extension
 
@@ -19,7 +19,7 @@ The dazzle command line utility allows the user to transform a bitmap image usin
 
 ```
  dazzle  bitmap_file_path file  new_file_name file transform_method
- 
+
  ```
 
 ### Installation
@@ -30,11 +30,11 @@ This is a node js project that can be installed and run as a command line tool.
 
   2. In terminal, navigate to the root of the project.
 
-  3. Enter  
-  ```npm install```
+  3. Enter
+  `npm install`
 
-  4. Enter  
-  ```npm link```
+  4. Enter
+  `npm link`
 
   5. You are now ready to use dazzle!
 
@@ -46,30 +46,30 @@ This is a node js project that can be installed and run as a command line tool.
 
 ### Transform Methods:
 
-  - random   Randomize the color palette of the image
+  - `random`  Randomize the color palette of the image
 
-  - reverse  Description of -a flag
+  - `reverse`  Description of -a flag
 
-  - boostGreen  Sets the green values to 255
+  - `boostGreen`  Sets the green values to 255
 
-  - boostRed	Sets the red values to 255
+  - `boostRed`	Sets the red values to 255
 
-  - boostBlue	Sets the blue values to 255
+  - `boostBlue`	Sets the blue values to 255
 
-  - redChannel	 Creates a gray scale image based on the value of the red value
+  - `redChannel`	 Creates a gray scale image based on the value of the red value
 
-  - blackWhite	Creates a gray scale image based on the average value of the rgb values
+  - `blackWhite`	Creates a gray scale image based on the average value of the rgb values
 
-  - invert   Inverts the rgb values
+  - `invert`   Inverts the rgb values
 
-  - invert2  Inverts every fourth bit in the color palette
+  - `invert2`  Inverts every fourth bit in the color palette
 
-  - invert3  Inverts every third bit in the color palette
+  - `invert3`  Inverts every third bit in the color palette
 
-  - invert4  Inverts every other bit in the color palette
+  - `invert4`  Inverts every other bit in the color palette
 
 ### Example
-  
+
   ```
   dazzle ~/users/home/pictures/test.bmp dazed boostGreen
 
@@ -90,35 +90,35 @@ The transform module contains functions to change the color array or pixel array
 
 ##### Transform Functions:
 
-* random - takes each bit in the color array and assigns a random number (between 0 and 255) to the RGBa values. The new image file created will be different each time this function is called.
+* `random` - takes each bit in the color array and assigns a random number (between 0 and 255) to the RGBa values. The new image file created will be different each time this function is called.
 
-* invert - alters the color array to the opposite RGBa value (ex: 255 becomes 0).
+* `invert` - alters the color array to the opposite RGBa value (ex: 255 becomes 0).
 
-* reverse - alters the pixel array and flips the image both vertically and horizontally.
+* `reverse` - alters the pixel array and flips the image both vertically and horizontally.
 
-* boostGreen - alters all green values in the color array to 255.
+* `boostGreen` - alters all green values in the color array to 255.
 
-* boostRed - alters all red values in the color array to 255.
+* `boostRed` - alters all red values in the color array to 255.
 
-* boostBlue - alters all blue values in the color array to 255.
+* `boostBlue` - alters all blue values in the color array to 255.
 
-* redChannel - alters each green and blue value in the color array to equal the red value. This returns a grayscale image based on the red channel.
+* `redChannel` - alters each green and blue value in the color array to equal the red value. This returns a grayscale image based on the red channel.
 
-* blackWhite - alters each red green and blue value in the color array to the average of all three and returns a grayscale image.
+* `blackWhite` - alters each red green and blue value in the color array to the average of all three and returns a grayscale image.
 
-* invert2 - alters every 4th bit in the color array to it's opposite value.
+* `invert2` - alters every 4th bit in the color array to it's opposite value.
 
-* invert3 - alters every 3rd bit in the color array to it's opposite value.
+* `invert3` - alters every 3rd bit in the color array to it's opposite value.
 
-* invert4 - alters every other bit in the color array to it's opposite value.
+* `invert4` - alters every other bit in the color array to it's opposite value.
 
 
 
 ## TESTING
 
-***
+---
 
-  ### index.test.js
+### index.test.js
 
   - Test that the app wil not run without arguments.
 
@@ -127,9 +127,9 @@ The transform module contains functions to change the color array or pixel array
   - Test that the app wil not run with out a valid transform method.
 
 
-  ### reader.test.js
+### reader.test.js
 
-  #### reader.read
+#### reader.read
 
   - Test that the reader function can read a file.
 
@@ -137,7 +137,7 @@ The transform module contains functions to change the color array or pixel array
 
   - Test the the reader function will send an error if the file path is missing.
 
-  #### reader.write
+#### reader.write
 
   - Test that the write function can create a file.
 
@@ -145,19 +145,19 @@ The transform module contains functions to change the color array or pixel array
 
   - Test that the write function can return an error message if the directory does not exist
 
-  
-  ### bitmap.test.js
+
+### bitmap.test.js
 
   - Test that the object will return an error if the buffer is null.
-  
+
   - Test that the constructor can create an object from a buffer
 
   - Test that the constructor will return an error message if the buffer is not from a bit map.
 
-  
-  ### transform.test.js
 
-  #### transform.random
+### transform.test.js
+
+#### transform.random
 
   - Test that the object passed to the transform was created by the Bmp object constructor.
 
@@ -167,7 +167,7 @@ The transform module contains functions to change the color array or pixel array
 
   - Test that the colorArray no longer matches the original
 
-  #### transform.reverse
+#### transform.reverse
 
   - Test that the object passed to the transform was created by the Bmp object constructor.
 
@@ -215,7 +215,7 @@ The transform module contains functions to change the color array or pixel array
 
   - Test that the pixelArray and colorArray properties have values.
 
-  - Test that all the values are equal to the red value 
+  - Test that all the values are equal to the red value
 
 #### transform.blackWhite
 
@@ -235,7 +235,7 @@ The transform module contains functions to change the color array or pixel array
 
   - Test that the pixelArray and colorArray properties have values.
 
-  - Test that the values of each color are the inverse of the original 
+  - Test that the values of each color are the inverse of the original
 
 #### transform.invert2
 
@@ -244,7 +244,7 @@ The transform module contains functions to change the color array or pixel array
   - Test that the object has the pixelArray and colorArray properties.
 
   - Test that the pixelArray and colorArray properties have values.
-  
+
   - Test that every 4th value is the inverse of the original
 
 
@@ -267,20 +267,3 @@ The transform module contains functions to change the color array or pixel array
   - Test that the pixelArray and colorArray properties have values.
 
   - Test that every other value is the inverse of the original
-
-
-
-
-
-
-
-
-
-   
-
-  
-
-
-
-
-
