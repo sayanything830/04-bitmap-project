@@ -9,14 +9,14 @@ reader.read = function(path, callback) {
       console.error(err);
       return callback(err);
     }
-    callback(null, fd);
+    return callback(null, fd);
   });
 };
 
 reader.write = function(bmpObj, filePath, callback) {
   fs.writeFile(filePath, bmpObj.allData, err => {
     if(err) return callback(err);
-    console.log('file created');
+    console.log(`File created: ${filePath}`);
     return callback(null);
   });
 };
