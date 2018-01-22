@@ -111,3 +111,55 @@ The transform module contains functions to change the color array or pixel array
 * invert3 - alters every 3rd bit in the color array to it's opposite value.
 
 * invert4 - alters every other bit in the color array to it's opposite value.
+
+
+
+## TESTING
+
+***
+
+  ### index.test.js
+
+    - Test that the app wil not run without arguments.
+
+    - Test that the app does not run with less than two arguments.
+
+    - Test that the app wil not run with out a valid transform method.
+
+
+  ### reader.test.js
+
+  #### reader.read
+
+    - Test that the reader function can read a file.
+
+    - Test that the reader function will send an error message if the file does not exist.
+
+    - Test the the reader function will send an error if the file path is missing.
+
+  #### reader.write
+
+    - Test that the write function can create a file.
+
+    - Test that the write function can write to a file.
+
+    - Test that the write function can return an error message if the directory does not exist
+
+  #### bitmap.test.js
+
+    - Test that the object will return an error if the buffer is null.
+    
+    - Test that the constructor can create an object from a buffer
+
+    - Test that the constructor will return an error message if the buffer is not from a bit map.
+
+  #### transform.js
+
+   
+
+  
+
+
+
+
+

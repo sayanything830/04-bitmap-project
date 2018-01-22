@@ -27,7 +27,7 @@ describe('Reader Module', function() {
       });
     });
 
-    it('should error if filepath is missing.', (done) => {
+    it('should error if file path is missing.', (done) => {
       reader.read('', (err, fd) => {
         if(err) console.error(err);
         expect(err).not.toBeNull();
