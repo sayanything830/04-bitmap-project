@@ -83,6 +83,17 @@ man dazzle
 
 ---
 
+### Reader Module
+
+The reader module requires a file system module and contains two functions. The read and write function takes in an arity of two, the file path and callback. The read method reads the image file past in and passes the information to the bitmap module. The write method takes the transformed object representing the image and writes a new file based on the path provided in the argument.  The callback in the read file sends the file data of the original image to the bitmap module.
+
+##### Reader Functions:
+
+* `read` - takes the file data of the image from the file path given and the callback sends the information to the bitmap module.
+
+* `write` - takes the file data of the new image from the bitmap module and creates a new file.
+
+---
 
 ### Transform Module
 
