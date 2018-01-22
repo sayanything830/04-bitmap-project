@@ -120,40 +120,161 @@ The transform module contains functions to change the color array or pixel array
 
   ### index.test.js
 
-    - Test that the app wil not run without arguments.
+  - Test that the app wil not run without arguments.
 
-    - Test that the app does not run with less than two arguments.
+  - Test that the app does not run with less than two arguments.
 
-    - Test that the app wil not run with out a valid transform method.
+  - Test that the app wil not run with out a valid transform method.
 
 
   ### reader.test.js
 
   #### reader.read
 
-    - Test that the reader function can read a file.
+  - Test that the reader function can read a file.
 
-    - Test that the reader function will send an error message if the file does not exist.
+  - Test that the reader function will send an error message if the file does not exist.
 
-    - Test the the reader function will send an error if the file path is missing.
+  - Test the the reader function will send an error if the file path is missing.
 
   #### reader.write
 
-    - Test that the write function can create a file.
+  - Test that the write function can create a file.
 
-    - Test that the write function can write to a file.
+  - Test that the write function can write to a file.
 
-    - Test that the write function can return an error message if the directory does not exist
+  - Test that the write function can return an error message if the directory does not exist
 
-  #### bitmap.test.js
+  
+  ### bitmap.test.js
 
-    - Test that the object will return an error if the buffer is null.
-    
-    - Test that the constructor can create an object from a buffer
+  - Test that the object will return an error if the buffer is null.
+  
+  - Test that the constructor can create an object from a buffer
 
-    - Test that the constructor will return an error message if the buffer is not from a bit map.
+  - Test that the constructor will return an error message if the buffer is not from a bit map.
 
-  #### transform.js
+  
+  ### transform.test.js
+
+  #### transform.random
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that the colorArray no longer matches the original
+
+  #### transform.reverse
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test the the pixelArray is the reverse of the original
+
+#### transform.boostGreen
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that all the green values are 255
+
+#### transform.boostRed
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that all the red values are 255
+
+#### transform.boostBlue
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that all the blue values are 255
+
+#### transform.redChannel
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that all the values are equal to the red value 
+
+#### transform.blackWhite
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that the values are the average of all the values
+
+#### transform.invert
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that the values of each color are the inverse of the original 
+
+#### transform.invert2
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+  
+  - Test that every 4th value is the inverse of the original
+
+
+#### transform.invert3
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that every 3th value is the inverse of the original
+
+#### transform.invert4
+
+  - Test that the object passed to the transform was created by the Bmp object constructor.
+
+  - Test that the object has the pixelArray and colorArray properties.
+
+  - Test that the pixelArray and colorArray properties have values.
+
+  - Test that every other value is the inverse of the original
+
+
+
+
+
+
+
+
 
    
 

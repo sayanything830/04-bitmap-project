@@ -8,7 +8,7 @@ const transform = require('../lib/transform.js');
 describe('#Transform module tests', function() {
 
   describe('#Transform.random tests', function() {
-    it('should return error message if the objet was not created by the Bmp constructor', (done) => {
+    it('should return error message if the object was not created by the Bmp constructor', (done) => {
       transform.random({some: 'thing'}, (err, bmp) => {
         if(err) console.error(err);
         expect(err).toBe('This is not a valid bitmap object');
@@ -193,8 +193,8 @@ describe('#Transform module tests', function() {
   });
   
   describe('#Transform.boostGreen tests', function() {
-    it('should return error message if the objet was not created by the Bmp constructor', (done) => {
-      transform.random({some: 'thing'}, (err, bmp) => {
+    it('should return error message if the object was not created by the Bmp constructor', (done) => {
+      transform.boostGreen({some: 'thing'}, (err, bmp) => {
         if(err) console.error(err);
         expect(err).toBe('This is not a valid bitmap object');
         done();
