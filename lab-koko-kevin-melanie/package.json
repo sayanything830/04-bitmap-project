@@ -11,7 +11,8 @@
   },
   "man": "dazzle.1",
   "scripts": {
-    "test": "jest --verbose"
+    "test": "jest --verbose",
+    "lint": "eslint"
   },
   "author": "melanie, koko, kevin",
   "license": "ISC",
